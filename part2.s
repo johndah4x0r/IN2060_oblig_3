@@ -34,15 +34,24 @@ fib.top:
     bx lr
 
 main:
+    @ Set up frame
+    push {lr}               @ (save LR)
+
     @ Pass index to `fib` and call it
     mov a1, #13
     bl fib
     @ (result returned in R0)
 
-    @ TODO: Print to screen
+    @ Print to screen
+    mov a2, r0              @ Store result in R1
+    ldr a1, =output_string  @ Load pointer to formatting string
+    bl printf               @ Call `printf`
+
+    mov r0, #0              @ Set return code
 
     @ Always return properly to caller (even from main)
-    bx lr
+    pop {lr}                @ (restore LR)
+    bx lr                   @ (branch and exchange)
 
 @ The 'data' section contains static data for our program
 .data
