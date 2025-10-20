@@ -27,7 +27,7 @@ fib.top:
     
     @ Decrement counter and continue if R2 != 0
     subs r2, r2, #1
-    bnz fib.top
+    bne fib.top
     @ -- fall-through on exhaustion -- @
 
     @ Final current value is in R0; return to caller
