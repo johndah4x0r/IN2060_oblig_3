@@ -48,8 +48,8 @@ main.addf:
     sub r1, r0, r1              @ r1 = r0.exp - r1.exp
 
     @ Set the implied MSB (bit mask 0x80_0000)
-    orr r2, r2, #0x80_0000
-    orr r3, r3, #0x80_0000
+    orr r2, r2, #0x800000
+    orr r3, r3, #0x800000
 
     @ Then shift r1.dec to the right
     @ by the difference (in r1)
